@@ -30,7 +30,7 @@
     body.dark a, body.dark .nav-menu ul a, body.dark .post-content .more a, body.dark .post-meta {
         color: #888;
     }
-    body.dark #header , body.dark .whisper .comment-list li.comment-parent , body.dark table td {
+    body.dark #header , body.dark .whisper .comment-list li.comment-parent , body.dark table td , body.dark .comment-level-even {
         background-color: #263238;
         border-bottom: 1px solid #182125;
     }
