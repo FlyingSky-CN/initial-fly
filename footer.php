@@ -89,13 +89,13 @@ function switchDarkMode(){
     var night = document.cookie.replace(/(?:(?:^|.*;\s*)dark\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
     if (night == '0'){
         document.body.classList.add('dark');
-        document.cookie = "dark=1;path=/;domain=fsky7.com";
+        document.cookie = "dark=1;path=/";
         console.log('Dark mode on');
         notie('已开启 Dark Mode ，早 6 点之前保持开启。', {type:'info', autoHide:true, timeout: 3000,width:200});
         document.getElementById("darkmode").innerHTML="亮";
     }else{
         document.body.classList.remove('dark');
-        document.cookie = "dark=0;path=/;domain=fsky7.com";
+        document.cookie = "dark=0;path=/";
         console.log('Dark mode off');
         notie('已关闭 Dark Mode ', {type:'info', autoHide:true, timeout: 1000,width:200});
         document.getElementById("darkmode").innerHTML="暗";
@@ -105,13 +105,13 @@ function switchDarkMode(){
     if(document.cookie.replace(/(?:(?:^|.*;\s*)dark\s*\=\s*([^;]*).*$)|^.*$/, "$1") === ''){
         if(new Date().getHours() > 22 || new Date().getHours() < 6){
             document.body.classList.add('dark');
-            document.cookie = "dark=1;path=/;domain=fsky7.com";
+            document.cookie = "dark=1;path=/";
             console.log('Dark mode on');
             notie('已开启 Dark Mode，早 6 点之前保持开启。 ', {type:'info', autoHide:true, timeout: 3000,width:200});
             document.getElementById("darkmode").innerHTML="亮";
         }else{
             document.body.classList.remove('dark');
-            document.cookie = "dark=0;path=/;domain=fsky7.com";
+            document.cookie = "dark=0;path=/";
             console.log('Dark mode off');
             notie('已关闭 Dark Mode ', {type:'info', autoHide:true, timeout: 1000,width:200});
             document.getElementById("darkmode").innerHTML="暗";
