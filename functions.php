@@ -81,6 +81,9 @@ function themeConfig($form) {
 	$TimeNoticeLock = new Typecho_Widget_Helper_Form_Element_Text('TimeNoticeLock', NULL, '30', _t('久远文章提醒阈值'), _t('单位：天，默认30天'));
 	$TimeNoticeLock->input->setAttribute('class', 'mini');
 	$form->addInput($TimeNoticeLock);
+	
+	$SiteTime = new Typecho_Widget_Helper_Form_Element_Text('SiteTime', NULL, NULL, _t('建站时间'), _t('格式：月/日/年 时:分:秒（示例：08/19/2018 10:00:00 为 2018年8月19日10点整），显示在网站底部，留空不显示'));
+	$form->addInput($SiteTime);
 
 	$HeadFixed = new Typecho_Widget_Helper_Form_Element_Radio('HeadFixed', 
 	array(1 => _t('启用'),
