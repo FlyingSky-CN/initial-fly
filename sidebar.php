@@ -20,6 +20,13 @@
 <li><a href="https://board.fsky7.com/">面板(实验室/API)</a></li>
 </ul>
 </section>
+<section class="widget">
+<h3 class="widget-title">恰饭位</h3>
+<ul class="widget-tile" id="stat">
+<li>如果您有意向购买服务器的话，不妨点下面的图片，给我带来点回馈，毕竟用爱发电（要恰饭的）。</li>
+</ul>
+<a href="https://www.vultr.com/?ref=7826843-4F"><img src="https://www.vultr.com/media/banner_3.png" width="300" height="250"></a>
+</section>
 <?php if (!empty($this->options->sidebarBlock) && in_array('ShowHotPosts', $this->options->sidebarBlock)): ?>
 <section class="widget">
 <h3 class="widget-title">热门文章</h3>

@@ -4,7 +4,7 @@
  * 
  * @package Initial - Fly
  * @author <a href="http://www.offodd.com/">JIElive</a> / <a href="https://fsky7.com/">FlyingSky</a>
- * @version 2.4.3
+ * @version 10.0.0
  * @link http://www.offodd.com/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
