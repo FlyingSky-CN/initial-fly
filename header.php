@@ -113,7 +113,14 @@
 </style>
 <?php endif; ?>
 <link rel="stylesheet" href="<?php cjUrl('style.min.css') ?>" />
+<?php if ($this->options->FlyStyle): ?>
 <style>
+    #body .container {
+        padding: 0px;
+    }
+    .site-name {
+        padding-left: 6px;
+    }
     .whisper .comment-child {
         padding: 5px 8px;
     }
@@ -121,7 +128,7 @@
         box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     }
     .thumb img, .post-content img, .post, .respond #textarea, .textbutton, .comment-body, .avatar , .notie {
-        border-radius: 5px;
+        border-radius: 3px;
     }
     .textbutton .text , .notie {
         border: 0px!important;
@@ -134,6 +141,11 @@
         border: 1px solid #666;
         border-radius: 5px;
     }
+    .whisper .comment-list li.comment-parent {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #eee;
+    }
     code {
         color: #489eb9;
     }
@@ -141,6 +153,9 @@
         margin-bottom: 0px;
         margin-left: 8px;
         margin-right: 8px;
+    }
+    .breadcrumbs {
+        margin-top: 8px;
     }
     .copyright {
         color: #999;
@@ -160,8 +175,8 @@
     .post {
         margin-left: 8px;
         margin-right: 8px;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 8px;
+        margin-bottom: 8px;
         padding: 16px;
     }
     .post-title {
@@ -204,6 +219,7 @@
         border-top: 1px solid #c6cbd1;
     }
 </style>
+<?php endif; ?>
 </head>
 <body class="<?php if($_COOKIE['dark']=='1'): ?>dark<?php endif; ?> <?php if ($this->options->HeadFixed): ?>head-fixed<?php endif; ?>">
 <!--[if lt IE 9]>

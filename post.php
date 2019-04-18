@@ -15,6 +15,24 @@
 <li><?php Postviews($this); ?></li>
 </ul>
 <div class="post-content">
+<?php if ($this->options->TimeNotice): ?>
+<?php 
+$time=time() - $this->modified;
+$lock=$this->options->TimeNoticeLock;
+$lock=$lock*24*60*60;
+if ($time>=$lock) {
+?>
+<script defer>
+<?php if ($_GET['_pjax']) { ?>
+notie('此文章最后修订于 <?php echo date('Y年m月d日' , $this->modified);?>，其中的信息可能已经有所发展或是发生改变。', {type:'warning', autoHide:true, timeout: 5000,width:200});
+<?php } else { ?>
+window.onload=function (){
+    notie('此文章最后修订于 <?php echo date('Y年m月d日' , $this->modified);?>，其中的信息可能已经有所发展或是发生改变。', {type:'warning', autoHide:true, timeout: 5000,width:200});
+}
+<?php } ?>
+</script>
+<?php } ?>
+<?php endif; ?>
 <?php $this->content(); ?>
 </div>
 <?php

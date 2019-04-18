@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define('INITIAL_VERSION_NUMBER', '2.4.2');
+define('INITIAL_VERSION_NUMBER', '10.0.0');
 
 if (Helper::options()->GravatarUrl) define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->GravatarUrl);
 
@@ -65,6 +65,22 @@ function themeConfig($form) {
 	0 => _t('关闭')),
 	1, _t('黑暗模式总开关'), _t('默认开启'));
 	$form->addInput($DarkMode);
+	
+	$FlyStyle = new Typecho_Widget_Helper_Form_Element_Radio('FlyStyle', 
+	array(1 => _t('Fly 样式'),
+	0 => _t('原版样式')),
+	1, _t('网站样式选择'), _t('默认为 Fly 样式'));
+	$form->addInput($FlyStyle);
+	
+	$TimeNotice = new Typecho_Widget_Helper_Form_Element_Radio('TimeNotice', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	0, _t('久远文章提醒'), _t('默认关闭'));
+	$form->addInput($TimeNotice);
+	
+	$TimeNoticeLock = new Typecho_Widget_Helper_Form_Element_Text('TimeNoticeLock', NULL, '30', _t('久远文章提醒阈值'), _t('单位：天，默认30天'));
+	$TimeNoticeLock->input->setAttribute('class', 'mini');
+	$form->addInput($TimeNoticeLock);
 
 	$HeadFixed = new Typecho_Widget_Helper_Form_Element_Radio('HeadFixed', 
 	array(1 => _t('启用'),
@@ -188,7 +204,7 @@ function themeInit($archive) {
 
 function cjUrl($path) {
 	$options = Helper::options();
-	$ver = '?ver=2.4.3';
+	$ver = '?ver=10.0.0';
 	$options->themeUrl($path.$ver);
 }
 
@@ -257,7 +273,8 @@ function createCatalog($obj) {
 		global $catalog_count;
 		$catalog_count ++;
 		$catalog[] = array('text' => trim(strip_tags($obj[3])), 'depth' => $obj[1], 'count' => $catalog_count);
-		return '<h'.$obj[1].$obj[2].'><a class="cl-offset" id="dl-'.$obj[3].'" name="cl-'.$catalog_count.'"></a>'.$obj[3].'</h'.$obj[1].'>';
+		$text = trim(strip_tags($obj[3]));
+		return '<h'.$obj[1].$obj[2].'><a class="cl-offset" id="dl-'.$text.'" name="cl-'.$catalog_count.'"></a>'.$text.'</h'.$obj[1].'>';
 	}, $obj);
 	return $obj."\n".getCatalog();
 }
