@@ -11,15 +11,6 @@
 </ul>
 </section>
 <?php endif; ?>
-<section class="widget">
-<h3 class="widget-title">站点列表</h3>
-<ul class="widget-tile">
-<li><a href="https://fsky7.com/">个人主页</a></li>
-<li><a href="https://blog.fsky7.com/">个人博客(本站)</a></li>
-<li><a href="https://studio.fsky7.com/">工作室(项目站)</a></li>
-<li><a href="https://board.fsky7.com/">面板(实验室/API)</a></li>
-</ul>
-</section>
 <?php if (!empty($this->options->sidebarBlock) && in_array('ShowHotPosts', $this->options->sidebarBlock)): ?>
 <section class="widget">
 <h3 class="widget-title">热门文章</h3>
