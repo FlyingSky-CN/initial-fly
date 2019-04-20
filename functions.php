@@ -85,6 +85,12 @@ function themeConfig($form) {
 	$SiteTime = new Typecho_Widget_Helper_Form_Element_Text('SiteTime', NULL, NULL, _t('建站时间'), _t('格式：月/日/年 时:分:秒（示例：08/19/2018 10:00:00 为 2018年8月19日10点整），显示在网站底部，留空不显示'));
 	$form->addInput($SiteTime);
 
+    $WordCount = new Typecho_Widget_Helper_Form_Element_Radio('WordCount', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	1, _t('文章字数统计'), _t('默认开启'));
+	$form->addInput($WordCount);
+
 	$HeadFixed = new Typecho_Widget_Helper_Form_Element_Radio('HeadFixed', 
 	array(1 => _t('启用'),
 	0 => _t('关闭')),
@@ -631,4 +637,11 @@ function MyLinks($links) {
         $obj = explode("=",$link[$i]);
         echo '<li><a href="'.$obj['1'].'" target="_blank">'.$obj['0'].'</a></li>';
     }
+}
+
+function WordCount($cid) {
+    $db=Typecho_Db::get();
+    $rs=$db->fetchRow($db->select ('table.contents.text')->from('table.contents')->where('table.contents.cid=?',$cid)->order('table.contents.cid',Typecho_Db::SORT_ASC)->limit(1));
+    $text = preg_replace("/[^\x{4e00}-\x{9fa5}]/u","",$rs['text']);
+    echo mb_strlen($text,'UTF-8').'字';
 }

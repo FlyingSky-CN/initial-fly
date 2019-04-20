@@ -13,6 +13,9 @@
 <li><?php $this->category(','); ?></li>
 <li><a href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('暂无评论', '%d 条评论'); ?></a></li>
 <li><?php Postviews($this); ?></li>
+<?php if ($this->options->WordCount): ?>
+<li><?php WordCount($this->cid); ?></li>
+<?php endif; ?>
 </ul>
 <div class="post-content">
 <?php if ($this->options->TimeNotice): ?>
