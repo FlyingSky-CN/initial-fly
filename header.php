@@ -144,7 +144,6 @@
     .whisper .comment-list li.comment-parent {
         margin-top: 10px;
         padding: 10px;
-        border: 1px solid #eee;
     }
     code {
         color: #489eb9;
