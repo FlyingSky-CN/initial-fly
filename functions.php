@@ -226,7 +226,7 @@ function themeInit($archive) {
 
 function cjUrl($path) {
 	$options = Helper::options();
-	$ver = '?ver=10.0.0';
+	$ver = '?ver=10.0.1';
 	$options->themeUrl($path.$ver);
 }
 
