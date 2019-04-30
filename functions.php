@@ -187,7 +187,9 @@ function themeConfig($form) {
 	$form->addInput($ShowWhisper->multiMode());
 
 	$sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
-	array('ShowHotPosts' => _t('显示热门文章（根据浏览量排序）'),
+	array('ShowWaySit' => _t('显示导航位（下方自定义）'),
+	'ShowEatFoodSit' => _t('显示广告位（下方自定义）'),
+	'ShowHotPosts' => _t('显示热门文章（根据浏览量排序）'),
 	'ShowRecentPosts' => _t('显示最新文章'),
 	'ShowRecentComments' => _t('显示最近回复'),
 	'IgnoreAuthor' => _t('↪不显示作者回复'),
@@ -198,6 +200,12 @@ function themeConfig($form) {
 	'ShowOther' => _t('显示其它杂项')),
 	array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
 	$form->addInput($sidebarBlock->multiMode());
+
+    $WaySit = new Typecho_Widget_Helper_Form_Element_Textarea('WaySit', NULL, NULL, _t('导航位内容'));
+	$form->addInput($WaySit);
+    
+    $EatFoodSit = new Typecho_Widget_Helper_Form_Element_Textarea('EatFoodSit', NULL, NULL, _t('广告位内容'));
+	$form->addInput($EatFoodSit);
 
 	$ICPbeian = new Typecho_Widget_Helper_Form_Element_Text('ICPbeian', NULL, NULL, _t('ICP备案号'), _t('在这里输入ICP备案号,留空则不显示'));
 	$form->addInput($ICPbeian);
