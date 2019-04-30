@@ -12,7 +12,8 @@ function themeConfig($form) {
     margin-top: 10px;
     font-size: 16px;">感谢您使用 Initial - Fly 主题</span>
     <a href="https://blog.fsky7.com/archives/52/"  target="_blank">关于&帮助</a> &nbsp;
-    <a href="https://www.offodd.com/17.html" target="_blank">原作&鸣谢</a>
+    <a href="https://www.offodd.com/17.html" target="_blank">原作&鸣谢</a> &nbsp;
+    <code>10.0.1</code>
     </p>';
     
 	$logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
@@ -66,6 +67,16 @@ function themeConfig($form) {
 	1, _t('黑暗模式总开关'), _t('默认开启'));
 	$form->addInput($DarkMode);
 	
+	$DarkModeFD = new Typecho_Widget_Helper_Form_Element_Radio('DarkModeFD', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	0, _t('黑暗模式跨域使用开关'), _t('默认关闭'));
+	$form->addInput($DarkModeFD);
+	
+	$DarkModeDomain = new Typecho_Widget_Helper_Form_Element_Text('DarkModeDomain', NULL, NULL, _t('黑暗模式跨域使用总域名'));
+	$DarkModeDomain->input->setAttribute('class', 'mini');
+	$form->addInput($DarkModeDomain);
+	
 	$FlyStyle = new Typecho_Widget_Helper_Form_Element_Radio('FlyStyle', 
 	array(1 => _t('Fly 样式'),
 	0 => _t('原版样式')),
@@ -83,6 +94,7 @@ function themeConfig($form) {
 	$form->addInput($TimeNoticeLock);
 	
 	$SiteTime = new Typecho_Widget_Helper_Form_Element_Text('SiteTime', NULL, NULL, _t('建站时间'), _t('格式：月/日/年 时:分:秒（示例：08/19/2018 10:00:00 为 2018年8月19日10点整），显示在网站底部，留空不显示'));
+	$SiteTime->input->setAttribute('class', 'mini');
 	$form->addInput($SiteTime);
 
     $WordCount = new Typecho_Widget_Helper_Form_Element_Radio('WordCount', 
@@ -153,6 +165,7 @@ function themeConfig($form) {
 	$form->addInput($MusicUrl);
 
 	$MusicVol = new Typecho_Widget_Helper_Form_Element_Text('MusicVol', NULL, NULL, _t('背景音乐播放音量（输入范围：0~1）'), _t('请输入一个0到1之间的小数（0为静音  0.5为50%音量  1为100%最大音量）输入错误内容或留空则使用默认音量100%'));
+	$MusicVol->input->setAttribute('class', 'mini');
 	$form->addInput($MusicVol->addRule('isInteger', _t('请填入一个0~1内的数字')));
 
 	$InsideLinksIcon = new Typecho_Widget_Helper_Form_Element_Radio('InsideLinksIcon', 

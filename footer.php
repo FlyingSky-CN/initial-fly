@@ -86,18 +86,25 @@ console.log("\n %c Initial By JIElive %c http://www.offodd.com %c \n","color:#ff
 <script>
 console.log("\n %c Fly By FlyingSKy %c https://fsky7.com/ %c \n","color:#fff;background:#444;padding:5px 0;border: 1px solid #444;","color:#fff;background:#fff;padding:5px 0;border: 1px solid #444;","");</script>
 <?php if ($this->options->DarkMode): ?>
+<?php 
+    if ($this->options->DarkModeFD && $this->options->DarkModeDomain) {
+        $DarkModeFD="domain=".$this->options->DarkModeDomain;
+    } else {
+        $DarkModeFD="";
+    }
+?>
 <script>
 function switchDarkMode(){
     var night = document.cookie.replace(/(?:(?:^|.*;\s*)dark\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
     if (night == '0'){
         document.body.classList.add('dark');
-        document.cookie = "dark=1;path=/;domain=fsky7.com";
+        document.cookie = "dark=1;path=/;<?=$DarkModeFD?>";
         console.log('Dark mode on');
         notie('已开启 Dark Mode ，早 6 点之前保持开启。', {type:'info', autoHide:true, timeout: 3000,width:200});
         document.getElementById("darkmode").innerHTML="亮";
     }else{
         document.body.classList.remove('dark');
-        document.cookie = "dark=0;path=/;domain=fsky7.com";
+        document.cookie = "dark=0;path=/;<?=$DarkModeFD?>";
         console.log('Dark mode off');
         notie('已关闭 Dark Mode ', {type:'info', autoHide:true, timeout: 1000,width:200});
         document.getElementById("darkmode").innerHTML="暗";
@@ -107,13 +114,13 @@ function switchDarkMode(){
     if(document.cookie.replace(/(?:(?:^|.*;\s*)dark\s*\=\s*([^;]*).*$)|^.*$/, "$1") === ''){
         if(new Date().getHours() > 22 || new Date().getHours() < 6){
             document.body.classList.add('dark');
-            document.cookie = "dark=1;path=/;domain=fsky7.com";
+            document.cookie = "dark=1;path=/;<?=$DarkModeFD?>";
             console.log('Dark mode on');
             notie('已开启 Dark Mode，早 6 点之前保持开启。 ', {type:'info', autoHide:true, timeout: 3000,width:200});
             document.getElementById("darkmode").innerHTML="亮";
         }else{
             document.body.classList.remove('dark');
-            document.cookie = "dark=0;path=/;domain=fsky7.com";
+            document.cookie = "dark=0;path=/;<?=$DarkModeFD?>";
             console.log('Dark mode off');
             notie('已关闭 Dark Mode ', {type:'info', autoHide:true, timeout: 1000,width:200});
             document.getElementById("darkmode").innerHTML="暗";
