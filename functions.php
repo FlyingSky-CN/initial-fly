@@ -379,7 +379,7 @@ function Contents_Comments_Initial($limit = 10, $ignoreAuthor = 0) {
 		$select->where('ownerId <> authorId');
 	}
 	$page_whisper = FindContents('page-whisper.php', 'commentsNum', 'd');
-	if (isset($page_whisper)) {
+	if (!empty($page_whisper)) {
 		$select->where('cid <> ? OR (cid = ? AND parent <> ?)', $page_whisper[0]['cid'], $page_whisper[0]['cid'], '0');
 	}
 	$comments = $db->fetchAll($select);
