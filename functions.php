@@ -628,7 +628,7 @@ function themeFields($layout) {
 	false, _t('文章目录'), _t('默认关闭，启用则会在文章内显示“文章目录”（若文章内无任何标题，则不显示目录）'));
 	$layout->addItem($catalog);
 	
-	if($_SERVER['SCRIPT_NAME']=="/admin/write-post.php"){
+	if($_SERVER['SCRIPT_NAME']=="/admin/write-post.php" || $_SERVER['SCRIPT_NAME']=="/admin/write-page.php"){
     	$licenses = new Typecho_Widget_Helper_Form_Element_Radio('linceses', 
     	array('BY' => _t('CC BY'),
     	'BY-SA' => _t('CC BY-SA'),
