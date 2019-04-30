@@ -201,6 +201,9 @@ function themeConfig($form) {
 
 	$ICPbeian = new Typecho_Widget_Helper_Form_Element_Text('ICPbeian', NULL, NULL, _t('ICP备案号'), _t('在这里输入ICP备案号,留空则不显示'));
 	$form->addInput($ICPbeian);
+	
+	$ButtomText = new Typecho_Widget_Helper_Form_Element_Textarea('ButtomText', NULL, NULL, _t('底部自定义内容'), _t('位于底部版权下方建站时间上方'));
+	$form->addInput($ButtomText);
 
 	$CustomContent = new Typecho_Widget_Helper_Form_Element_Textarea('CustomContent', NULL, NULL, _t('底部自定义内容'), _t('位于底部，footer之后body之前，适合放置一些JS内容，如网站统计代码等（若开启全站Pjax，目前支持Google和百度统计的回调，其余统计代码可能会不准确）'));
 	$form->addInput($CustomContent);

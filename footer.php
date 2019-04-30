@@ -12,7 +12,9 @@
 </ul>
 <?php endif; ?>
 <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>">FlyingSky</a>. Powered by <a href="http://www.typecho.org" target="_blank">Typecho</a> &amp; <a href="http://www.offodd.com/17.html" target="_blank">Initial</a>.</p>
-<p>FlyingSky's Blog | <a href="https://blog.fsky7.com/links">Links</a> | <a href="https://blog.fsky7.com/guestbook">Guestbook</a> | <a href="https://blog.fsky7.com/archives">Archives</a> | <a href="https://blog.fsky7.com/sitemap.xml">Sitemap</a>
+<?php if (!empty($this->options->ButtomText)): ?>
+<?=$this->options->ButtomText?>
+<?php endif; ?>
 <?php if ($this->options->SiteTime): ?>
 <p>Has been running for <a id="runtime_span"></a>.</p>
 <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("<?=$this->options->SiteTime?>");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span.innerHTML=""+A+" Day "+B+" Hour "+C+" Min "+D+" Sec"}show_runtime();</script>
