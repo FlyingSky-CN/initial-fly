@@ -645,10 +645,12 @@ function themeFields($layout) {
 function MyLinks($links) {
     $link = explode("\n",$links);
     $num = count($link);
-    for ($i=0; $i<=$num; $i++)
-    {
-        $obj = explode("=",$link[$i]);
-        echo '<li><a href="'.$obj['1'].'" target="_blank">'.$obj['0'].'</a></li>';
+    for ($i=0; $i<$num; $i++) {
+        $links = trim($link[$i]);
+        if ($links) {
+            $obj = explode("=",$links);
+            echo '<li><a href="'.$obj['1'].'" target="_blank">'.$obj['0'].'</a></li>';
+        }
     }
 }
 
