@@ -151,7 +151,7 @@ function themeConfig($form) {
 	$scrollTop = new Typecho_Widget_Helper_Form_Element_Radio('scrollTop', 
 	array(1 => _t('启用'),
 	0 => _t('关闭')),
-	0, _t('返回顶部'), _t('默认关闭，启用将在右下角显示“返回顶部”按钮'));
+	1, _t('返回顶部'), _t('默认开启，启用将在右下角显示“返回顶部”按钮'));
 	$form->addInput($scrollTop);
 
 	$MusicSet = new Typecho_Widget_Helper_Form_Element_Radio('MusicSet', 

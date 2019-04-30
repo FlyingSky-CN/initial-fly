@@ -22,7 +22,7 @@
 <?php endif; ?>
 </div>
 </footer>
-<?php if ($this->options->scrollTop || ($this->options->MusicSet && $this->options->MusicUrl)): ?>
+<?php if ($this->options->scrollTop || ($this->options->MusicSet && $this->options->MusicUrl) || $this->options-DarkMode): ?>
 <div id="cornertool">
 <ul>
 <?php if ($this->options->scrollTop): ?>
