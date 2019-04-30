@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define('INITIAL_VERSION_NUMBER', '10.0.0');
+define('INITIAL_VERSION_NUMBER', '10.0.1');
 
 if (Helper::options()->GravatarUrl) define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->GravatarUrl);
 
@@ -12,7 +12,8 @@ function themeConfig($form) {
     margin-top: 10px;
     font-size: 16px;">感谢您使用 Initial - Fly 主题</span>
     <a href="https://blog.fsky7.com/archives/52/"  target="_blank">关于&帮助</a> &nbsp;
-    <a href="https://www.offodd.com/17.html" target="_blank">原作&鸣谢</a>
+    <a href="https://www.offodd.com/17.html" target="_blank">原作&鸣谢</a> &nbsp;
+    <code>10.0.1</code>
     </p>';
     
 	$logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
@@ -66,6 +67,16 @@ function themeConfig($form) {
 	1, _t('黑暗模式总开关'), _t('默认开启'));
 	$form->addInput($DarkMode);
 	
+	$DarkModeFD = new Typecho_Widget_Helper_Form_Element_Radio('DarkModeFD', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	0, _t('黑暗模式跨域使用开关'), _t('默认关闭'));
+	$form->addInput($DarkModeFD);
+	
+	$DarkModeDomain = new Typecho_Widget_Helper_Form_Element_Text('DarkModeDomain', NULL, NULL, _t('黑暗模式跨域使用总域名'));
+	$DarkModeDomain->input->setAttribute('class', 'mini');
+	$form->addInput($DarkModeDomain);
+	
 	$FlyStyle = new Typecho_Widget_Helper_Form_Element_Radio('FlyStyle', 
 	array(1 => _t('Fly 样式'),
 	0 => _t('原版样式')),
@@ -83,7 +94,14 @@ function themeConfig($form) {
 	$form->addInput($TimeNoticeLock);
 	
 	$SiteTime = new Typecho_Widget_Helper_Form_Element_Text('SiteTime', NULL, NULL, _t('建站时间'), _t('格式：月/日/年 时:分:秒（示例：08/19/2018 10:00:00 为 2018年8月19日10点整），显示在网站底部，留空不显示'));
+	$SiteTime->input->setAttribute('class', 'mini');
 	$form->addInput($SiteTime);
+
+    $WordCount = new Typecho_Widget_Helper_Form_Element_Radio('WordCount', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	1, _t('文章字数统计'), _t('默认开启'));
+	$form->addInput($WordCount);
 
 	$HeadFixed = new Typecho_Widget_Helper_Form_Element_Radio('HeadFixed', 
 	array(1 => _t('启用'),
@@ -133,7 +151,7 @@ function themeConfig($form) {
 	$scrollTop = new Typecho_Widget_Helper_Form_Element_Radio('scrollTop', 
 	array(1 => _t('启用'),
 	0 => _t('关闭')),
-	0, _t('返回顶部'), _t('默认关闭，启用将在右下角显示“返回顶部”按钮'));
+	1, _t('返回顶部'), _t('默认开启，启用将在右下角显示“返回顶部”按钮'));
 	$form->addInput($scrollTop);
 
 	$MusicSet = new Typecho_Widget_Helper_Form_Element_Radio('MusicSet', 
@@ -147,6 +165,7 @@ function themeConfig($form) {
 	$form->addInput($MusicUrl);
 
 	$MusicVol = new Typecho_Widget_Helper_Form_Element_Text('MusicVol', NULL, NULL, _t('背景音乐播放音量（输入范围：0~1）'), _t('请输入一个0到1之间的小数（0为静音  0.5为50%音量  1为100%最大音量）输入错误内容或留空则使用默认音量100%'));
+	$MusicVol->input->setAttribute('class', 'mini');
 	$form->addInput($MusicVol->addRule('isInteger', _t('请填入一个0~1内的数字')));
 
 	$InsideLinksIcon = new Typecho_Widget_Helper_Form_Element_Radio('InsideLinksIcon', 
@@ -168,7 +187,9 @@ function themeConfig($form) {
 	$form->addInput($ShowWhisper->multiMode());
 
 	$sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
-	array('ShowHotPosts' => _t('显示热门文章（根据浏览量排序）'),
+	array('ShowWaySit' => _t('显示导航位（下方自定义）'),
+	'ShowEatFoodSit' => _t('显示广告位（下方自定义）'),
+	'ShowHotPosts' => _t('显示热门文章（根据浏览量排序）'),
 	'ShowRecentPosts' => _t('显示最新文章'),
 	'ShowRecentComments' => _t('显示最近回复'),
 	'IgnoreAuthor' => _t('↪不显示作者回复'),
@@ -180,8 +201,17 @@ function themeConfig($form) {
 	array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowTag', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
 	$form->addInput($sidebarBlock->multiMode());
 
+    $WaySit = new Typecho_Widget_Helper_Form_Element_Textarea('WaySit', NULL, NULL, _t('导航位内容'));
+	$form->addInput($WaySit);
+    
+    $EatFoodSit = new Typecho_Widget_Helper_Form_Element_Textarea('EatFoodSit', NULL, NULL, _t('广告位内容'));
+	$form->addInput($EatFoodSit);
+
 	$ICPbeian = new Typecho_Widget_Helper_Form_Element_Text('ICPbeian', NULL, NULL, _t('ICP备案号'), _t('在这里输入ICP备案号,留空则不显示'));
 	$form->addInput($ICPbeian);
+	
+	$ButtomText = new Typecho_Widget_Helper_Form_Element_Textarea('ButtomText', NULL, NULL, _t('底部自定义内容'), _t('位于底部版权下方建站时间上方'));
+	$form->addInput($ButtomText);
 
 	$CustomContent = new Typecho_Widget_Helper_Form_Element_Textarea('CustomContent', NULL, NULL, _t('底部自定义内容'), _t('位于底部，footer之后body之前，适合放置一些JS内容，如网站统计代码等（若开启全站Pjax，目前支持Google和百度统计的回调，其余统计代码可能会不准确）'));
 	$form->addInput($CustomContent);
@@ -207,7 +237,7 @@ function themeInit($archive) {
 
 function cjUrl($path) {
 	$options = Helper::options();
-	$ver = '?ver=10.0.0';
+	$ver = '?ver=10.0.1';
 	$options->themeUrl($path.$ver);
 }
 
@@ -360,7 +390,7 @@ function Contents_Comments_Initial($limit = 10, $ignoreAuthor = 0) {
 		$select->where('ownerId <> authorId');
 	}
 	$page_whisper = FindContents('page-whisper.php', 'commentsNum', 'd');
-	if (isset($page_whisper)) {
+	if (!empty($page_whisper)) {
 		$select->where('cid <> ? OR (cid = ? AND parent <> ?)', $page_whisper[0]['cid'], $page_whisper[0]['cid'], '0');
 	}
 	$comments = $db->fetchAll($select);
@@ -609,7 +639,7 @@ function themeFields($layout) {
 	false, _t('文章目录'), _t('默认关闭，启用则会在文章内显示“文章目录”（若文章内无任何标题，则不显示目录）'));
 	$layout->addItem($catalog);
 	
-	if($_SERVER['SCRIPT_NAME']=="/admin/write-post.php"){
+	if($_SERVER['SCRIPT_NAME']=="/admin/write-post.php" || $_SERVER['SCRIPT_NAME']=="/admin/write-page.php"){
     	$licenses = new Typecho_Widget_Helper_Form_Element_Radio('linceses', 
     	array('BY' => _t('CC BY'),
     	'BY-SA' => _t('CC BY-SA'),
@@ -626,9 +656,18 @@ function themeFields($layout) {
 function MyLinks($links) {
     $link = explode("\n",$links);
     $num = count($link);
-    for ($i=0; $i<=$num; $i++)
-    {
-        $obj = explode("=",$link[$i]);
-        echo '<li><a href="'.$obj['1'].'" target="_blank">'.$obj['0'].'</a></li>';
+    for ($i=0; $i<$num; $i++) {
+        $links = trim($link[$i]);
+        if ($links) {
+            $obj = explode("=",$links);
+            echo '<li><a href="'.$obj['1'].'" target="_blank">'.$obj['0'].'</a></li>';
+        }
     }
+}
+
+function WordCount($cid) {
+    $db=Typecho_Db::get();
+    $rs=$db->fetchRow($db->select ('table.contents.text')->from('table.contents')->where('table.contents.cid=?',$cid)->order('table.contents.cid',Typecho_Db::SORT_ASC)->limit(1));
+    $text = preg_replace("/[^\x{4e00}-\x{9fa5}]/u","",$rs['text']);
+    echo mb_strlen($text,'UTF-8').'字';
 }
