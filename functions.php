@@ -102,6 +102,12 @@ function themeConfig($form) {
 	0 => _t('关闭')),
 	1, _t('文章字数统计'), _t('默认开启'));
 	$form->addInput($WordCount);
+	
+	$ViewImg = new Typecho_Widget_Helper_Form_Element_Radio('ViewImg', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	1, _t('图片灯箱'), _t('默认开启'));
+	$form->addInput($ViewImg);
 
 	$HeadFixed = new Typecho_Widget_Helper_Form_Element_Radio('HeadFixed', 
 	array(1 => _t('启用'),
