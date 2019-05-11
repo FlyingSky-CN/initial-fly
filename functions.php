@@ -153,6 +153,10 @@ function themeConfig($form) {
 	0 => _t('关闭')),
 	0, _t('Ajax翻页'), _t('默认关闭，启用则会使用Ajax加载文章翻页'));
 	$form->addInput($AjaxLoad);
+	
+	$AjaxLoadTimes = new Typecho_Widget_Helper_Form_Element_Text('AjaxLoadTimes', NULL, '0', _t('Ajax自动翻页限制'), _t('Ajax加载文章最多自动翻页~次，0则无限制'));
+	$AjaxLoadTimes->input->setAttribute('class', 'mini');
+	$form->addInput($AjaxLoadTimes);
 
 	$scrollTop = new Typecho_Widget_Helper_Form_Element_Radio('scrollTop', 
 	array(1 => _t('启用'),
