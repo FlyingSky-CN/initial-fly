@@ -77,12 +77,6 @@ function themeConfig($form) {
 	$DarkModeDomain->input->setAttribute('class', 'mini');
 	$form->addInput($DarkModeDomain);
 	
-	$FlyStyle = new Typecho_Widget_Helper_Form_Element_Radio('FlyStyle', 
-	array(1 => _t('Fly 样式'),
-	0 => _t('原版样式')),
-	1, _t('网站样式选择'), _t('默认为 Fly 样式'));
-	$form->addInput($FlyStyle);
-	
 	$TimeNotice = new Typecho_Widget_Helper_Form_Element_Radio('TimeNotice', 
 	array(1 => _t('启用'),
 	0 => _t('关闭')),

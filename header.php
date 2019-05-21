@@ -116,7 +116,6 @@
 </style>
 <?php endif; ?>
 <link rel="stylesheet" href="<?php cjUrl('style.min.css') ?>" />
-<?php if ($this->options->FlyStyle): ?>
 <style>
     #body .container {
         padding: 0px;
@@ -221,7 +220,6 @@
         border-top: 1px solid #c6cbd1;
     }
 </style>
-<?php endif; ?>
 </head>
 <body class="<?php if($_COOKIE['dark']=='1'): ?>dark<?php endif; ?> <?php if ($this->options->HeadFixed): ?>head-fixed<?php endif; ?>">
 <!--[if lt IE 9]>
