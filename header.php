@@ -116,110 +116,6 @@
 </style>
 <?php endif; ?>
 <link rel="stylesheet" href="<?php cjUrl('style.min.css') ?>" />
-<style>
-    #body .container {
-        padding: 0px;
-    }
-    .site-name {
-        padding-left: 6px;
-    }
-    .whisper .comment-child {
-        padding: 5px 8px;
-    }
-    #header, .ajaxload a, .post, .comment-body, .respond #textarea, .textbutton, .thumb img, .post-content img, .avatar , .notie {
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-    }
-    .thumb img, .post-content img, .post, .respond #textarea, .textbutton, .comment-body, .avatar , .notie {
-        border-radius: 3px;
-    }
-    .textbutton .text , .notie {
-        border: 0px!important;
-    }
-    .whisper {
-        line-height: 21px;
-    }
-    .ajaxload a, .ajaxload .loading:hover, .ajaxload .loading {
-        padding: 5px 20px;
-        border: 1px solid #666;
-        border-radius: 5px;
-    }
-    .whisper .comment-list li.comment-parent {
-        margin-top: 10px;
-        padding: 10px;
-    }
-    code {
-        color: #489eb9;
-    }
-    #comments, .breadcrumbs, .tags , .rewards {
-        margin-bottom: 0px;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-    .breadcrumbs {
-        margin-top: 10px;
-    }
-    .copyright {
-        color: #999;
-        font-size: .875em;
-        line-height: 1.5;
-    }
-    .post-near {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-    #comments {
-        border-top: 0px;
-        padding-top: 0px;
-    }
-    .post {
-        margin-left: 8px;
-        margin-right: 8px;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        padding: 16px;
-    }
-    .post-title {
-        margin-top: 0px;
-    }
-    .more {
-        margin-bottom: 0px;
-    }
-    .noties {
-        top: 61px!important;
-    }
-    /* 滚动条 */
-    *::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
-    }
-    *::-webkit-scrollbar-thumb {
-        background: #444;
-    }
-    *::-webkit-scrollbar-track {
-        background: #f3f3f3;
-    }
-    *::-webkit-scrollbar-corner {
-        background: #f3f3f3;
-    }
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-    table tr {
-        background-color: #fff;
-        border-top: 1px solid #c6cbd1;
-    }
-    table td , table th {
-        border: 1px solid #dfe2e5;
-        padding: 6px 13px;
-    }
-    table tr {
-        background-color: #fff;
-        border-top: 1px solid #c6cbd1;
-    }
-</style>
 </head>
 <body class="<?php if($_COOKIE['dark']=='1'): ?>dark<?php endif; ?> <?php if ($this->options->HeadFixed): ?>head-fixed<?php endif; ?>">
 <!--[if lt IE 9]>
@@ -307,4 +203,4 @@ endif; ?>
 </div>
 </header>
 <div id="body">
-<div class="container clearfix">
+<div class="container clearfix" style="padding: 0px;">
