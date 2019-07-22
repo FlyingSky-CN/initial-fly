@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define('INITIAL_VERSION_NUMBER', '10.0.1');
+define('INITIAL_VERSION_NUMBER', '10.0.2');
 
 if (Helper::options()->GravatarUrl) define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->GravatarUrl);
 
@@ -13,7 +13,7 @@ function themeConfig($form) {
     font-size: 16px;">感谢您使用 Initial - Fly 主题</span>
     <a href="https://blog.fsky7.com/archives/52/"  target="_blank">关于&帮助</a> &nbsp;
     <a href="https://www.offodd.com/17.html" target="_blank">原作&鸣谢</a> &nbsp;
-    <code>10.0.1</code>
+    <code>10.0.2</code>
     </p>';
     
 	$logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
@@ -77,12 +77,6 @@ function themeConfig($form) {
 	$DarkModeDomain->input->setAttribute('class', 'mini');
 	$form->addInput($DarkModeDomain);
 	
-	$FlyStyle = new Typecho_Widget_Helper_Form_Element_Radio('FlyStyle', 
-	array(1 => _t('Fly 样式'),
-	0 => _t('原版样式')),
-	1, _t('网站样式选择'), _t('默认为 Fly 样式'));
-	$form->addInput($FlyStyle);
-	
 	$TimeNotice = new Typecho_Widget_Helper_Form_Element_Radio('TimeNotice', 
 	array(1 => _t('启用'),
 	0 => _t('关闭')),
@@ -102,6 +96,12 @@ function themeConfig($form) {
 	0 => _t('关闭')),
 	1, _t('文章字数统计'), _t('默认开启'));
 	$form->addInput($WordCount);
+	
+	$ViewImg = new Typecho_Widget_Helper_Form_Element_Radio('ViewImg', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	1, _t('图片灯箱'), _t('默认开启'));
+	$form->addInput($ViewImg);
 
 	$HeadFixed = new Typecho_Widget_Helper_Form_Element_Radio('HeadFixed', 
 	array(1 => _t('启用'),
@@ -147,6 +147,10 @@ function themeConfig($form) {
 	0 => _t('关闭')),
 	0, _t('Ajax翻页'), _t('默认关闭，启用则会使用Ajax加载文章翻页'));
 	$form->addInput($AjaxLoad);
+	
+	$AjaxLoadTimes = new Typecho_Widget_Helper_Form_Element_Text('AjaxLoadTimes', NULL, '0', _t('Ajax自动翻页限制'), _t('Ajax加载文章最多自动翻页~次，0则无限制'));
+	$AjaxLoadTimes->input->setAttribute('class', 'mini');
+	$form->addInput($AjaxLoadTimes);
 
 	$scrollTop = new Typecho_Widget_Helper_Form_Element_Radio('scrollTop', 
 	array(1 => _t('启用'),

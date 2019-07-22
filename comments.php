@@ -9,16 +9,7 @@ function threadedComments($comments, $options) {
 		}
 	}
 ?>
-<li id="<?php $comments->theId(); ?>" class="comment-body<?php
-	if ($comments->levels > 0) {
-		echo ' comment-child';
-		$comments->levelsAlt(' comment-level-odd', ' comment-level-even');
-	} else {
-		echo ' comment-parent';
-	}
-	$comments->alt(' comment-odd', ' comment-even');
-echo $commentClass;
-?>">
+<li id="<?php $comments->theId(); ?>" class="comment-body<?php echo $commentClass;?>">
 <div class="comment-author">
 <?php $comments->gravatar('32'); ?>
 <cite><?php CommentAuthor($comments); ?></cite>
@@ -65,14 +56,16 @@ echo $commentClass;
 <p <?php if(!$this->user->hasLogin()): ?>class="textarea"<?php endif; ?>>
 <textarea name="text" id="textarea" placeholder="加入讨论..." required ><?php $this->remember('text'); ?></textarea>
 </p>
-<p <?php if(!$this->user->hasLogin()): ?>class="textbutton"<?php endif; ?>>
 <?php if(!$this->user->hasLogin()): ?>
+<p class="textbutton">
 <input type="text" name="author" id="author" class="text" placeholder="称呼 *" value="<?php $this->remember('author'); ?>" required />
 <input type="email" name="mail" id="mail" class="text" placeholder="邮箱<?php if ($this->options->commentsRequireMail): ?> *<?php endif; ?>" value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
 <input type="url" name="url" id="url" class="text" placeholder="http://<?php if ($this->options->commentsRequireURL): ?> *<?php endif; ?>" value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
 <?php endif; ?>
 <button type="submit" class="submit">提交评论</button>
+<?php if(!$this->user->hasLogin()): ?>
 </p>
+<?php endif; ?>
 </form>
 </div>
 <?php if ($this->options->commentsThreaded): ?>
