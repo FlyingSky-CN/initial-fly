@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define('INITIAL_VERSION_NUMBER', '10.0.2');
+define('INITIAL_VERSION_NUMBER', '10.0.3');
 
 if (Helper::options()->GravatarUrl) define('__TYPECHO_GRAVATAR_PREFIX__', Helper::options()->GravatarUrl);
 
@@ -13,7 +13,7 @@ function themeConfig($form) {
     font-size: 16px;">感谢您使用 Initial - Fly 主题</span>
     <a href="https://blog.fsky7.com/archives/52/"  target="_blank">关于&帮助</a> &nbsp;
     <a href="https://www.offodd.com/17.html" target="_blank">原作&鸣谢</a> &nbsp;
-    <code>10.0.2</code>
+    <code>10.0.3</code>
     </p>';
     
 	$logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点 LOGO 地址'), _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO'));
