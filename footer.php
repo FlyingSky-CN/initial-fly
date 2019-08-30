@@ -11,7 +11,7 @@
 <?php endif; ?>
 </ul>
 <?php endif; ?>
-<p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>">FlyingSky</a>. Powered by <a href="http://www.typecho.org" target="_blank">Typecho</a> &amp; <a href="http://www.offodd.com/17.html" target="_blank">Initial</a>.</p>
+<p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title();?></a>. Powered by <a href="http://www.typecho.org" target="_blank">Typecho</a> &amp; <a href="https://blog.fsky7.com/archives/52/" target="_blank">Initial-fly</a>.</p>
 <?php if (!empty($this->options->ButtomText)): ?>
 <?=$this->options->ButtomText?>
 <?php endif; ?>
